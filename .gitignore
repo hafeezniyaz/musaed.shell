@@ -1,0 +1,65 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userprefs
+*.orig
+*.bak
+*.log
+*.ncb
+*.aps
+*.pch
+*.ilk
+*.obj
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vsp
+*.bsc
+*.vcproj.*.filters
+*.vmmap
+*.sof
+*.cache
+*.aps
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.obj
+*.res
+*.winmd
+*.appx
+*.appxbundle
+*.msi
+*.msp
+*.msm
+*.xap
+*.vmdk
+*.vhd
+
+# NuGet packages
+packages/
+*.nupkg
+*.snupkg
+
+# Resharper files
+*.DotSettings
+*.DotSettings.user
+
+# Other
+Thumbs.db
+Desktop.ini
