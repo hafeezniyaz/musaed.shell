@@ -1,0 +1,7 @@
+{
+  "orchestratorUrl": "http://localhost:5238",
+  "appName": "Musaed.Host",
+  "configName": "appsettings",
+  "assetName": "serverSettings",
+  "packageDownloadPath": "%LOCALAPPDATA%/Musaed.App"
+}

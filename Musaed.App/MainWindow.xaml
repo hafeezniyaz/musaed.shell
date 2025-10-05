@@ -1,0 +1,86 @@
+﻿<Window x:Class="Musaed.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Musaed.App"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="Musaed"
+        Height="400"
+        Width="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+
+        Background="Transparent">
+    <!--Icon="pack://application:,,,/Musaed.App;component/Resources/logo_64.ico"-->
+    <Window.Resources>
+       
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        
+        <Style x:Key="ModernProgressBar" TargetType="ProgressBar">
+            <Setter Property="Background" Value="#404040"/>
+            
+            <Setter Property="Foreground" Value="#FF9392D8"/>
+            
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="4"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border x:Name="MainContent"
+                CornerRadius="8"
+                Visibility="{Binding IsLoading,
+                                      Converter={StaticResource BooleanToVisibilityConverter},
+                                      ConverterParameter=invert}">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <!-- Primary colour (rgb 147,146,216) -->
+                    <!--<GradientStop Color="#FF9392D8" Offset="0.0"/>-->
+                    <!-- Very light complementary stop for a clean feel -->
+                    <!--<GradientStop Color="#FFE8E7FF" Offset="1.0"/>-->
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <wv2:WebView2 Name="WebView"
+                          Source="{Binding WebViewSource}" />
+        </Border>
+        <Border x:Name="LoadingScreen"
+                CornerRadius="8"
+                Visibility="{Binding IsLoading,
+                                      Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Musaed.App;component/Resources/background-rectangle.png"
+                            Stretch="UniformToFill"
+                            Opacity="1"/>
+            </Border.Background>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="60">
+                <Image Source="pack://application:,,,/Musaed.App;component/Resources/logo-vector.png"
+                       Width="60"
+                       Height="60"
+                       Stretch="Uniform"
+                       />
+                <TextBlock Text="Musae'd"
+                           FontFamily="Segoe UI Semibold"
+                           Foreground="#EAEAEA"
+                           FontSize="30"
+                           HorizontalAlignment="Center"/>
+                <ProgressBar IsIndeterminate="True"
+                             Width="200"
+                             Margin="0,20,0,10"
+                             Style="{StaticResource ModernProgressBar}"/>
+                <TextBlock Text="{Binding StatusMessage}"
+                           FontFamily="Segoe UI"
+                           Foreground="#EAEAEA"
+                           FontSize="16"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
